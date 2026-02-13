@@ -57,11 +57,11 @@ router1.post('/login',async(req,res)=>{
   try {
    const user= await User.findOne({email:req.body.email});  // find user by email
    if(!user){
-    return res.status(201).json({message:"User not found"});
+    return res.status(404).json({message:"User not found"});
    }
     const isPasswordValid= await bcrypt.compare(req.body.password,user.password); // compare password of input box  with this user  password (which email we check) 
     if( !isPasswordValid){
-    return res.status(201).json({message:"invalid password"});
+    return res.status(401).json({message:"invalid password"});
    }
    const {password,...others}= user._doc;  // destructuring to exclude password from user object (passwordn k alava sab dede in rest) (._doc is mongoose specific property)
      return res.status(201).json({others});
