@@ -9,7 +9,7 @@ const app = express();
 // Middleware
 app.use(express.json()); // parse JSON
 app.use(cors({
-      origin:  "https://your-production-domain.com", // replace with your frontend URL
+      origin:  "https://todo-frontend-snowy-rho.vercel.app", // replace with your frontend URL
           
     credentials: true,
 }));         // enable CORS
